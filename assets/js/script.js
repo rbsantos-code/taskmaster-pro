@@ -249,6 +249,24 @@ $(".card .list-group").sortable({
   // the children() methods returns an array of the list element's children
 });
 
+// TRASH section start
+$("#trash").droppable({
+  accept: ".card .list-group-item",
+  tolerance: "touch",
+  drop: function(event, ui) {
+    // remove dragged element from the dom
+    ui.draggable.remove();
+  },
+  over: function(event, ui) {
+    console.log(ui);
+  },
+  out:function(event, ui) {
+    console.log(ui);
+  }
+  
+});
+
+
 // remove all tasks
 $("#remove-tasks").on("click", function () {
   for (var key in tasks) {
@@ -257,23 +275,6 @@ $("#remove-tasks").on("click", function () {
   }
   saveTasks();
 });
-
-// TRASH section start
-$("#trash").droppable({
-  accept: ".card .list-group-item",
-  tolerance: "touch",
-  drop: function(event, ui) {
-    console.log("drop");
-  },
-  over: function(event, ui) {
-    console.log("over");
-  },
-  out:function(event, ui) {
-    console.log("out");
-  }
-  // ui.draggable.remove();
-});
-
 
 
 // load tasks for the first time
