@@ -22,6 +22,8 @@ var auditTask = function(taskEl) {
     $(taskEl).addClass("list-group-item-warning");
   }
 
+  console.log(taskEl);
+
 }; 
 
 var createTask = function (taskText, taskDate, taskList) {
@@ -86,7 +88,7 @@ $("#task-form-modal").on("shown.bs.modal", function () {
 });
 
 // save button in modal was clicked
-$("#task-form-modal .btn-primary").click(function () {
+$("#task-form-modal .btn-save").click(function () {
   // get form values
   var taskText = $("#modalTaskDescription").val();
   var taskDate = $("#modalDueDate").val();
@@ -330,6 +332,14 @@ $("#remove-tasks").on("click", function () {
 $("#modalDueDate").datepicker({
   minDate: 1
 });
+
+
+//setTImeout/setInterval example - 5.5.4
+setInterval(function() {
+  $(".card .list-group-item").each(function(index, el) {
+    auditTask(el);
+  });
+}, (1000 * 60) * 30);
 
 
 
